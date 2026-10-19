@@ -1,0 +1,18 @@
+# Interne Kunden-/Briefingunterlagen (nicht Teil der Website, teils vertraulich)
+*.pdf
+tech-spec.md
+
+# Lokale Editor-/Workspace-Konfiguration (verweist auf lokalen ~/Downloads-Pfad)
+*.code-workspace
+
+# Claude-seitige Design-System-Metadaten (kein Anwendungs-Config, siehe CLAUDE.md)
+Radwerk_Mitte_Designvorgaben/design-system.json
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Editor-/OS-Müll
+Thumbs.db
+*.swp
+*~

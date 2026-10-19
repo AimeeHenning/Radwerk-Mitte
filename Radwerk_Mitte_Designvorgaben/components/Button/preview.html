@@ -1,0 +1,18 @@
+<!-- @dsCard group="Aktionen" height=150 subtitle="Primär · Akzent · Sekundär" -->
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@600;700&display=swap">
+<style>
+body{margin:0;background:var(--surface-page);font-family:var(--font-display)}
+.row{display:flex;flex-wrap:wrap;gap:var(--space-4);padding:var(--space-6);align-items:center}
+.btn{font:700 16px/20px var(--font-display);border-radius:var(--radius-pill);padding:var(--space-3) var(--space-6);min-height:44px;border:2px solid transparent;cursor:pointer}
+.btn:focus-visible{outline:3px solid var(--interactive);outline-offset:2px}
+.primary{background:var(--radblau);color:#fff}.primary:hover{background:var(--radblau-dunkel)}
+.accent{background:var(--koralle);color:var(--nachtblau)}.accent:hover{background:var(--koralle-dunkel)}
+.secondary{background:var(--surface-card);color:var(--ink);border-color:var(--border-strong)}
+</style>
+<div class="row">
+  <button class="btn primary">Angebot anfragen</button>
+  <button class="btn accent">Termin wählen</button>
+  <button class="btn secondary">Mehr zum Ablauf</button>
+</div>
+<script></script>

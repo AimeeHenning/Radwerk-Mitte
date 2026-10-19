@@ -1,0 +1,20 @@
+Radwerk Mitte – Designvorgaben Website (Stufe 1)
+Stand: 19.10.2026 · Entwurf v1
+
+Inhalt
+  README.md            Regelwerk: JobRad-Orientierung, Farben, Glow-Akzente, Typografie,
+                       Layout, Komponenten, Bildsprache, Tonalität, Barrierefreiheit
+  Glow-Akzente.md      Aufbau und Einsatzregeln der dunklen, leuchtenden Akzentflächen
+  Seitenaufbau.md      Startseite Sektion für Sektion
+  tokens.json          Alle Design-Tokens (Farben in den Themes "hell" und "glow",
+                       Typografie, Abstände, Radien, Schatten, Layout)
+  tokens.css           Dieselben Tokens als CSS-Variablen, direkt einbindbar
+  components/          Vorschauen (preview.html im Browser öffnen) und Regeln (README.md)
+                       für Button, Zielgruppen-Kachel, Glow-Panel, Schritte und das Cover
+  design-system.json   Index für das Design-System-Artefakt in Claude
+
+Hinweise
+  - Schriften kommen von Google Fonts (Plus Jakarta Sans, JetBrains Mono); für die
+    Vorschauen ist eine Internetverbindung nötig.
+  - Beispielwerte (z. B. 42 € Monatsrate) sind erfunden.
+  - Logo-Datei fehlt noch; bis dahin gilt der Schriftzug laut README, Abschnitt 7.

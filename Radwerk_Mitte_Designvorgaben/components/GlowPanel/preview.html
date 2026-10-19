@@ -1,0 +1,33 @@
+<!-- @dsCard group="Glow" height=300 subtitle="Dunkle Akzentfläche für E-Mobilität und Digitales" -->
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@600;700&display=swap">
+<style>
+body{margin:0;background:var(--surface-page);padding:var(--space-6);font-family:var(--font-display)}
+.glow{background-color:var(--surface-page);color:var(--ink);border-radius:var(--radius-lg);padding:var(--space-8);
+ background-image:linear-gradient(rgba(92,200,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(92,200,255,.08) 1px,transparent 1px);background-size:24px 24px;
+ display:grid;grid-template-columns:auto 1fr;gap:var(--space-8);align-items:center}
+.ring{width:150px;height:150px;border-radius:50%;box-shadow:var(--shadow-glow-soft);position:relative}
+.ring svg{display:block}
+.ring .val{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring b{font:700 36px/1 var(--font-mono);color:var(--cyan-strom)}
+.ring span{font:600 12px/16px var(--font-mono);color:var(--ink-muted);margin-top:4px}
+.data{display:flex;flex-direction:column;gap:var(--space-4)}
+.kv{border-left:2px solid var(--cyan-strom);padding-left:var(--space-3)}
+.kv small{display:block;font:600 12px/16px var(--font-mono);letter-spacing:.08em;color:var(--ink-muted)}
+.kv strong{font:700 22px/28px var(--font-mono)}
+.status{grid-column:1/-1;border:1px solid var(--border);border-radius:var(--radius-sm);padding:var(--space-3) var(--space-4);font:600 14px/20px var(--font-mono);display:flex;gap:var(--space-3);align-items:center}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--cyan-strom);box-shadow:var(--shadow-glow)}
+</style>
+<div class="glow" data-theme="glow">
+  <div class="ring">
+    <svg viewBox="0 0 150 150" width="150" height="150"><circle cx="75" cy="75" r="64" fill="none" stroke="#22324d" stroke-width="10"/><circle cx="75" cy="75" r="64" fill="none" stroke="#5cc8ff" stroke-width="10" stroke-linecap="round" stroke-dasharray="330 402" transform="rotate(-90 75 75)"/></svg>
+    <div class="val"><b>42 €</b><span>pro Monat</span></div>
+  </div>
+  <div class="data">
+    <div class="kv"><small>RADPREIS</small><strong>3.200 €</strong></div>
+    <div class="kv"><small>LAUFZEIT</small><strong>36 Monate</strong></div>
+    <div class="kv"><small>ERSPARNIS GGÜ. KAUF</small><strong>ca. 28 %</strong></div>
+  </div>
+  <div class="status"><span class="dot"></span>Unverbindliche Beispielrechnung · Ihr Angebot erstellt Dilan Aydın</div>
+</div>
+<script></script>

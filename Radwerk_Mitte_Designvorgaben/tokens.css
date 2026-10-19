@@ -1,0 +1,92 @@
+/*
+  Generiert aus tokens.json (Radwerk Mitte, Version 1).
+  Theme "Hell" ist der Standard (:root). Theme "Glow" gilt nur innerhalb
+  dunkler Akzentflächen und wird über [data-theme="glow"] aktiviert, siehe
+  Glow-Akzente.md.
+*/
+
+:root {
+  /* Farben */
+  --radblau: #1f5fbf;
+  --radblau-dunkel: #174a96;
+  --radblau-tint: #e8effa;
+  --koralle: #ff6b4a;
+  --koralle-dunkel: #e8553a;
+  --cyan-strom: #5cc8ff;
+  --nachtblau: #0a1424;
+
+  --surface-page: #ffffff;
+  --surface-soft: #f3f6fa;
+  --surface-card: #ffffff;
+  --surface-inverse: #0a1424;
+
+  --ink: #0a1424;
+  --ink-muted: #4a5668;
+  --border: #d5dde8;
+  --border-strong: #8593a8;
+
+  --interactive: var(--radblau);
+  --on-interactive: #ffffff;
+
+  --status-ok: #1c7a4b;
+  --status-hinweis: #a34312;
+
+  /* Typografie */
+  --font-display: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+
+  /* Abstände */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+
+  /* Radien */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  /* Schatten */
+  --shadow-card: 0 1px 2px rgba(10, 20, 36, 0.06), 0 8px 24px rgba(10, 20, 36, 0.08);
+  --shadow-glow: 0 0 0 1px rgba(92, 200, 255, 0.45), 0 0 24px rgba(92, 200, 255, 0.35);
+  --shadow-glow-soft: 0 0 64px rgba(92, 200, 255, 0.18);
+
+  /* Layout */
+  --container-max: 1200px;
+  --text-max: 720px;
+  --header-height: 72px;
+}
+
+[data-theme="glow"] {
+  --radblau-tint: #16284a;
+  --surface-page: #0a1424;
+  --surface-soft: #111e33;
+  --surface-card: #13213a;
+  --surface-inverse: #1a2c4c;
+
+  --ink: #f1f5fb;
+  --ink-muted: #a9b6c8;
+  --border: #22324d;
+  --border-strong: #4a6385;
+
+  --interactive: var(--cyan-strom);
+  --on-interactive: #0a1424;
+
+  --status-ok: #5ee0a0;
+  --status-hinweis: #ffb199;
+
+  --shadow-card: none;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --header-height: 60px;
+    --space-24: 64px;
+  }
+}

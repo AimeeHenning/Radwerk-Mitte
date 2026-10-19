@@ -1,0 +1,30 @@
+<!-- @dsCard height=288 -->
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@600;700&display=swap">
+<style>
+html,body{margin:0;height:100%}
+body{background:var(--surface-page);position:relative;width:960px;height:288px;overflow:hidden;font-family:var(--font-display)}
+svg{position:absolute;left:0;top:0}
+.blau{fill:var(--radblau)}.nacht{fill:var(--surface-inverse)}.koralle{fill:var(--koralle)}.tint{fill:var(--radblau-tint)}
+.track{fill:none;stroke:var(--border);stroke-width:12}
+.arc{fill:none;stroke:var(--cyan-strom);stroke-width:12;stroke-linecap:round}
+.spoke{fill:none;stroke:var(--cyan-strom);stroke-width:2;opacity:.55}
+.txt{position:absolute;left:40px;bottom:32px;max-width:440px}
+h1{margin:0;font:800 96px/.94 var(--font-display);letter-spacing:-.02em;color:var(--ink)}
+p{margin:16px 0 0;font:500 14px/20px var(--font-display);color:var(--ink-muted)}
+</style>
+<svg width="960" height="288" viewBox="0 0 960 288">
+<!-- blocks: radblau 176x288 slab, surface-inverse 272x184 (radius-lg), koralle pill 184x72 (radius = half), radblau-tint 72x88 (radius-md)
+     arrangement: tall blue slab bleeding top+bottom, dark display block bleeding top/right with satellites below
+     pattern: literal motif (wheel / battery ring) - the README's glow panel and akku ring - arcs + spokes in cyan-strom
+     scales: gaps space-4 (16), radii radius-lg 24, radius-md 14, pill = 36 -->
+<rect class="blau" x="496" y="0" width="176" height="288"/>
+<rect class="nacht" x="688" y="-24" width="296" height="208" rx="24"/>
+<circle class="track" cx="824" cy="88" r="56"/>
+<circle class="arc" cx="824" cy="88" r="56" stroke-dasharray="289 352" transform="rotate(-90 824 88)"/>
+<g class="spoke"><line x1="824" y1="48" x2="824" y2="128"/><line x1="784" y1="88" x2="864" y2="88"/><line x1="796" y1="60" x2="852" y2="116"/><line x1="852" y1="60" x2="796" y2="116"/></g>
+<rect class="koralle" x="688" y="200" width="184" height="72" rx="36"/>
+<rect class="tint" x="888" y="200" width="72" height="88" rx="14"/>
+</svg>
+<div class="txt"><h1>Radwerk<br>Mitte</h1><p>Hell und nah wie die Werkstatt – mit leuchtenden Akzenten für die E-Mobilität.</p></div>
+<script></script>

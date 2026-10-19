@@ -1,0 +1,1117 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>radwerk mitte – Diensträder, E-Bikes und Werkstatt in Kassel &amp; Göttingen</title>
+<meta name="description" content="Dienstrad-Leasing für Arbeitgeber, E-Bikes für Beschäftigte und eine Werkstatt vor Ort in Kassel und Göttingen. Rate berechnen, Termin buchen, Status abfragen.">
+<link rel="stylesheet" href="Radwerk_Mitte_Designvorgaben/tokens.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    margin: 0;
+    font: 400 16px/26px var(--font-display);
+    color: var(--ink);
+    background: var(--surface-page);
+  }
+
+  img { max-width: 100%; display: block; }
+
+  a { color: var(--interactive); }
+
+  h1, h2, h3 { font-family: var(--font-display); margin: 0; color: var(--ink); }
+
+  .container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+  }
+  @media (min-width: 1024px) {
+    .container { padding: 0 var(--space-8); }
+  }
+
+  section { padding: var(--space-16) 0; }
+  @media (min-width: 768px) {
+    section { padding: var(--space-24) 0; }
+  }
+
+  .surface-soft { background: var(--surface-soft); }
+  .surface-page { background: var(--surface-page); }
+  .surface-tint { background: var(--radblau-tint); }
+  .surface-inverse { background: var(--surface-inverse); color: #f1f5fb; }
+
+  .eyebrow {
+    font: 700 14px/20px var(--font-display);
+    letter-spacing: 0.02em;
+    color: var(--radblau);
+    margin: 0 0 var(--space-2);
+  }
+  [data-theme="glow"] .eyebrow { color: var(--cyan-strom); }
+
+  h2.section-title { font: 700 30px/36px var(--font-display); max-width: var(--text-max); }
+  .section-head { margin-bottom: var(--space-12); }
+  .section-lead { max-width: var(--text-max); color: var(--ink-muted); margin-top: var(--space-2); }
+
+  /* Skip-Link */
+  .skip-link {
+    position: absolute;
+    left: var(--space-4);
+    top: -100px;
+    background: var(--radblau);
+    color: #fff;
+    padding: var(--space-3) var(--space-6);
+    border-radius: var(--radius-sm);
+    z-index: 200;
+    transition: top .15s ease;
+  }
+  .skip-link:focus { top: var(--space-4); }
+
+  :focus-visible {
+    outline: 3px solid var(--interactive);
+    outline-offset: 2px;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    font: 700 16px/20px var(--font-display);
+    border-radius: var(--radius-pill);
+    padding: var(--space-3) var(--space-6);
+    min-height: 44px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .btn-primary { background: var(--radblau); color: #fff; }
+  .btn-primary:hover { background: var(--radblau-dunkel); }
+  .btn-accent { background: var(--koralle); color: var(--nachtblau); }
+  .btn-accent:hover { background: var(--koralle-dunkel); }
+  .btn-secondary { background: var(--surface-card); color: var(--ink); border-color: var(--border-strong); }
+  .btn-secondary:hover { background: var(--surface-soft); }
+  [data-theme="glow"] .btn-secondary { background: transparent; color: var(--ink); }
+
+  /* Header */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--surface-page);
+    border-bottom: 1px solid var(--border);
+    min-height: var(--header-height);
+  }
+  .site-header .container {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    min-height: var(--header-height);
+  }
+  .wordmark {
+    font: 800 21px/1 var(--font-display);
+    color: var(--ink);
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .wordmark span { color: var(--radblau); }
+
+  .main-nav { display: none; }
+  .main-nav ul { list-style: none; display: flex; gap: var(--space-6); margin: 0; padding: 0; }
+  .main-nav a { color: var(--ink); font-weight: 600; text-decoration: none; }
+  .main-nav a:hover { color: var(--radblau); }
+  @media (min-width: 900px) {
+    .main-nav { display: block; flex: 1; }
+  }
+
+  .header-actions { display: flex; align-items: center; gap: var(--space-4); margin-left: auto; }
+  .phone-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .phone-link svg { flex-shrink: 0; }
+  .header-actions .btn-primary { display: none; }
+  @media (min-width: 640px) { .header-actions .btn-primary { display: inline-flex; } }
+
+  .nav-toggle {
+    display: inline-flex;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+  @media (min-width: 900px) { .nav-toggle { display: none; } }
+
+  .mobile-nav {
+    display: none;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface-page);
+  }
+  .mobile-nav.open { display: block; }
+  .mobile-nav ul { list-style: none; margin: 0; padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-4); }
+  .mobile-nav a { color: var(--ink); font-weight: 600; text-decoration: none; }
+  @media (min-width: 900px) { .mobile-nav { display: none !important; } }
+
+  /* Hero */
+  .hero-grid {
+    display: grid;
+    gap: var(--space-8);
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .hero h1 {
+    font: 800 36px/40px var(--font-display);
+    letter-spacing: -0.02em;
+  }
+  @media (min-width: 900px) {
+    .hero h1 { font-size: 56px; line-height: 60px; }
+  }
+  .hero .lead {
+    font: 400 19px/30px var(--font-display);
+    color: var(--ink-muted);
+    margin-top: var(--space-4);
+    max-width: 44ch;
+  }
+
+  .audience-switch {
+    display: inline-flex;
+    gap: var(--space-1);
+    background: var(--surface-soft);
+    border-radius: var(--radius-pill);
+    padding: var(--space-1);
+    margin: var(--space-6) 0;
+    flex-wrap: wrap;
+  }
+  .audience-switch button {
+    border: none;
+    background: transparent;
+    padding: var(--space-2) var(--space-4);
+    min-height: 44px;
+    border-radius: var(--radius-pill);
+    font: 700 14px/20px var(--font-display);
+    color: var(--ink-muted);
+    cursor: pointer;
+  }
+  .audience-switch button[aria-pressed="true"] {
+    background: var(--radblau);
+    color: #fff;
+  }
+
+  .hero-ctas { display: flex; gap: var(--space-4); flex-wrap: wrap; margin-top: var(--space-6); }
+
+  .photo-placeholder {
+    background: var(--radblau-tint);
+    border-radius: var(--radius-lg);
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-4);
+    color: var(--ink-muted);
+    font: 500 13px/18px var(--font-display);
+  }
+
+  /* Trust bar */
+  .trust-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-8);
+    align-items: center;
+    justify-content: space-between;
+  }
+  .trust-facts { display: flex; gap: var(--space-8); flex-wrap: wrap; font-weight: 700; }
+  .trust-logos { display: flex; gap: var(--space-6); flex-wrap: wrap; }
+  .trust-logo {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: var(--space-2) var(--space-4);
+    font: 600 14px/20px var(--font-display);
+    color: var(--ink-muted);
+    background: var(--surface-card);
+  }
+
+  /* Glow panel (Rechner / Status) */
+  .glow-grid {
+    display: grid;
+    gap: var(--space-8);
+  }
+  @media (min-width: 900px) {
+    .glow-grid { grid-template-columns: 1fr 1fr; align-items: start; }
+  }
+
+  .calc-form {
+    background: var(--surface-card);
+    border-radius: var(--radius-md);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-card);
+  }
+  .field { margin-bottom: var(--space-6); }
+  .field label { display: block; font: 600 14px/20px var(--font-display); margin-bottom: var(--space-2); }
+  .field input, .field select {
+    width: 100%;
+    min-height: 44px;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    font: 400 16px/22px var(--font-display);
+    background: var(--surface-page);
+    color: var(--ink);
+  }
+  .field .hint { font: 500 14px/20px var(--font-display); color: var(--ink-muted); margin-top: var(--space-2); }
+
+  .glow-panel {
+    background-color: var(--surface-page);
+    color: var(--ink);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    background-image:
+      linear-gradient(rgba(92,200,255,.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(92,200,255,.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  @media (max-width: 640px) {
+    .glow-panel { padding: var(--space-6); }
+  }
+
+  .glow-result { display: grid; grid-template-columns: auto 1fr; gap: var(--space-8); align-items: center; }
+  @media (max-width: 480px) {
+    .glow-result { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+  }
+  .ring { width: 150px; height: 150px; border-radius: 50%; position: relative; box-shadow: var(--shadow-glow-soft); flex-shrink: 0; }
+  .ring svg { display: block; }
+  .ring .arc {
+    transition: none;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .ring .arc.animate {
+      transition: stroke-dasharray 760ms ease-out;
+    }
+  }
+  .ring .val { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .ring b { font: 700 32px/1 var(--font-mono); color: var(--cyan-strom); }
+  .ring span { font: 600 12px/16px var(--font-mono); color: var(--ink-muted); margin-top: 4px; }
+
+  .data-list { display: flex; flex-direction: column; gap: var(--space-4); }
+  .kv { border-left: 2px solid var(--cyan-strom); padding-left: var(--space-3); }
+  .kv small { display: block; font: 600 12px/16px var(--font-mono); letter-spacing: .08em; color: var(--ink-muted); }
+  .kv strong { font: 700 22px/28px var(--font-mono); }
+
+  .glow-status-line {
+    margin-top: var(--space-6);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: var(--space-3) var(--space-4);
+    font: 600 14px/20px var(--font-mono);
+    display: flex;
+    gap: var(--space-3);
+    align-items: center;
+  }
+  .glow-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--cyan-strom); box-shadow: var(--shadow-glow); flex-shrink: 0; }
+
+  /* Steps */
+  .steps-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-6);
+    counter-reset: step;
+  }
+  @media (min-width: 768px) {
+    .steps-list { grid-template-columns: repeat(4, 1fr); }
+  }
+  .steps-list li { counter-increment: step; }
+  .steps-list li::before {
+    content: counter(step);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--radblau);
+    color: #fff;
+    font: 800 18px/1 var(--font-display);
+    margin-bottom: var(--space-4);
+  }
+  .steps-list h3 { font: 700 18px/24px var(--font-display); margin-bottom: var(--space-2); }
+  .steps-list p { font: 400 14px/21px var(--font-display); color: var(--ink-muted); margin: 0; }
+
+  /* Audience cards */
+  .audience-grid { display: grid; gap: var(--space-6); }
+  @media (min-width: 768px) { .audience-grid { grid-template-columns: repeat(3, 1fr); } }
+  .audience-card {
+    background: var(--surface-card);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .audience-card.is-b2b { outline: 2px solid var(--radblau); }
+  .audience-card .img {
+    aspect-ratio: 16/9;
+    background: var(--radblau-tint);
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-3);
+    font: 500 12px/16px var(--font-display);
+    color: var(--ink-muted);
+  }
+  .audience-card .body { padding: var(--space-6); }
+  .audience-card h3 { font: 700 19px/26px var(--font-display); margin-bottom: var(--space-2); }
+  .audience-card p { font: 400 15px/22px var(--font-display); color: var(--ink-muted); margin: 0 0 var(--space-4); }
+  .audience-card a { font: 700 15px/20px var(--font-display); text-decoration: none; }
+
+  /* Testimonial */
+  .testimonial { display: grid; gap: var(--space-8); align-items: center; }
+  @media (min-width: 768px) { .testimonial { grid-template-columns: 220px 1fr; } }
+  .testimonial blockquote { margin: 0; font: 500 21px/32px var(--font-display); color: var(--ink); }
+  .testimonial cite { display: block; margin-top: var(--space-4); font: 700 15px/20px var(--font-display); font-style: normal; color: var(--ink-muted); }
+  .testimonial .photo-placeholder { aspect-ratio: 1/1; }
+
+  /* Workshop & status */
+  .booking-wizard { background: var(--surface-card); border-radius: var(--radius-md); box-shadow: var(--shadow-card); padding: var(--space-8); }
+  .booking-steps-nav { display: flex; gap: var(--space-2); margin-bottom: var(--space-6); font: 600 13px/18px var(--font-display); color: var(--ink-muted); flex-wrap: wrap; }
+  .booking-steps-nav .is-active { color: var(--radblau); }
+  .booking-step { display: none; }
+  .booking-step.is-active { display: block; }
+  .radio-row, .choice-row { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-6); }
+  .choice-pill {
+    position: relative;
+  }
+  .choice-pill input { position: absolute; opacity: 0; width: 44px; height: 44px; cursor: pointer; }
+  .choice-pill label {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .choice-pill input:checked + label { background: var(--radblau); border-color: var(--radblau); color: #fff; }
+  .choice-pill input:focus-visible + label { outline: 3px solid var(--interactive); outline-offset: 2px; }
+  .booking-confirm { padding: var(--space-4); background: var(--surface-soft); border-radius: var(--radius-sm); font-weight: 600; }
+  .status-ok-text { color: var(--status-ok); }
+  .status-hinweis-text { color: var(--status-hinweis); }
+
+  .status-lookup-form { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-bottom: var(--space-6); }
+  .status-lookup-form input { flex: 1; min-width: 180px; min-height: 44px; padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm); border: 1px solid var(--border-strong); font: 400 16px var(--font-display); }
+  [data-theme="glow"] .status-lookup-form input { background: var(--surface-card); color: var(--ink); border-color: var(--border-strong); }
+  .status-result { display: flex; align-items: center; gap: var(--space-3); font: 600 15px/22px var(--font-mono); }
+  .status-icon { flex-shrink: 0; }
+
+  /* FAQ */
+  .faq-list { max-width: var(--text-max); }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: var(--space-4) 0;
+  }
+  .faq-item summary {
+    cursor: pointer;
+    font: 700 17px/24px var(--font-display);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+    list-style: none;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary .chev { transition: transform .15s ease; flex-shrink: 0; }
+  @media (prefers-reduced-motion: reduce) { .faq-item summary .chev { transition: none; } }
+  .faq-item[open] summary .chev { transform: rotate(180deg); }
+  .faq-item p { color: var(--ink-muted); margin: var(--space-3) 0 0; max-width: var(--text-max); }
+
+  /* Contact form */
+  .contact-grid { display: grid; gap: var(--space-8); }
+  @media (min-width: 900px) { .contact-grid { grid-template-columns: 1.3fr 1fr; } }
+  .contact-form { background: var(--surface-card); border-radius: var(--radius-md); box-shadow: var(--shadow-card); padding: var(--space-8); }
+  .field-row { display: grid; gap: var(--space-6); margin-bottom: var(--space-6); }
+  @media (min-width: 560px) { .field-row.two-col { grid-template-columns: 1fr 1fr; } }
+  textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: var(--space-3);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    font: 400 16px/22px var(--font-display);
+    resize: vertical;
+  }
+  .response-time { background: var(--surface-soft); border-radius: var(--radius-sm); padding: var(--space-6); }
+  .response-time h3 { font: 700 18px/24px var(--font-display); margin-bottom: var(--space-2); }
+  .contact-confirm { display: none; padding: var(--space-4); border-radius: var(--radius-sm); background: var(--surface-soft); font-weight: 600; margin-top: var(--space-4); }
+  .contact-confirm.is-visible { display: block; }
+
+  /* Footer */
+  .site-footer { background: var(--surface-inverse); color: #f1f5fb; padding: var(--space-16) 0 var(--space-6); }
+  .footer-grid { display: grid; gap: var(--space-8); }
+  @media (min-width: 768px) { .footer-grid { grid-template-columns: repeat(4, 1fr); } }
+  .site-footer h3 { font: 700 15px/20px var(--font-display); color: #f1f5fb; margin-bottom: var(--space-4); }
+  .site-footer address { font-style: normal; color: #a9b6c8; line-height: 1.6; }
+  .site-footer a { color: #a9b6c8; text-decoration: none; }
+  .site-footer a:hover { color: #fff; }
+  .footer-phone { color: #fff; font-weight: 700; }
+  .footer-legal { display: flex; gap: var(--space-6); flex-wrap: wrap; list-style: none; padding: 0; margin: var(--space-12) 0 0; border-top: 1px solid #22324d; padding-top: var(--space-6); }
+  .footer-legal li { font-size: 14px; }
+  .footer-note { color: #6f8097; font-size: 13px; margin-top: var(--space-4); }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+<!-- 1. Header -->
+<header class="site-header surface-page">
+  <div class="container">
+    <a class="wordmark" href="#top">radwerk<span> mitte</span></a>
+
+    <nav class="main-nav" aria-label="Hauptnavigation">
+      <ul>
+        <li><a href="#zielgruppen">Für Arbeitgeber</a></li>
+        <li><a href="#rechner">Für Beschäftigte</a></li>
+        <li><a href="#werkstatt">Werkstatt</a></li>
+        <li><a href="#faq">E-Bikes &amp; Shop</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a class="phone-link" href="tel:+4956180763070">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.63 2.63a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.45-1.2a2 2 0 0 1 2.11-.45c.85.3 1.73.51 2.63.63A2 2 0 0 1 22 16.92Z"/></svg>
+        <span>0561 807 630</span>
+      </a>
+      <a class="btn btn-primary" href="#kontakt">Angebot anfragen</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" id="nav-toggle" aria-label="Menü öffnen">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Hauptnavigation mobil">
+    <ul>
+      <li><a href="#zielgruppen">Für Arbeitgeber</a></li>
+      <li><a href="#rechner">Für Beschäftigte</a></li>
+      <li><a href="#werkstatt">Werkstatt</a></li>
+      <li><a href="#faq">E-Bikes &amp; Shop</a></li>
+      <li><a href="tel:+4956180763070">Telefon: 0561 807 630</a></li>
+      <li><a class="btn btn-primary" href="#kontakt">Angebot anfragen</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- 2. Hero -->
+  <section class="hero surface-page" id="top">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">radwerk mitte · seit 1989 in Kassel</p>
+        <h1 id="hero-heading">Diensträder für Ihr Team.</h1>
+        <p class="lead" id="hero-lead">Wir statten Ihr Team mit Diensträdern aus – und reparieren vor Ort in Kassel und Göttingen.</p>
+
+        <div class="audience-switch" role="group" aria-label="Zielgruppe wählen">
+          <button type="button" data-audience="arbeitgeber" aria-pressed="true">Für Arbeitgeber</button>
+          <button type="button" data-audience="beschaeftigte" aria-pressed="false">Für Beschäftigte</button>
+          <button type="button" data-audience="privat" aria-pressed="false">Privatkunden</button>
+        </div>
+
+        <div class="hero-ctas">
+          <a class="btn btn-primary" id="hero-primary-cta" href="#kontakt">Angebot anfragen</a>
+          <a class="btn btn-accent" id="hero-accent-cta" href="#werkstatt">Termin wählen</a>
+        </div>
+      </div>
+      <div class="photo-placeholder" role="img" aria-label="Foto: Mitarbeitende eines Klinikums übergeben Diensträder vor der Werkstatt in Kassel">
+        Foto: Team Klinikum mit Diensträdern, Übergabe in Kassel
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Vertrauensleiste -->
+  <section class="surface-soft">
+    <div class="container trust-row">
+      <div class="trust-facts">
+        <span>Seit 1989 in Kassel</span>
+        <span>2 Filialen mit Werkstatt</span>
+        <span>Kassel &amp; Göttingen</span>
+      </div>
+      <ul class="trust-logos" aria-label="Auswahl an Geschäftskunden">
+        <li class="trust-logo">Klinikum</li>
+        <li class="trust-logo">Stadtverwaltung</li>
+        <li class="trust-logo">Pflegedienst</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 4. Leasing-Rechner (Glow) -->
+  <section class="surface-page" id="rechner">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Dienstrad-Leasing</p>
+        <h2 class="section-title">Ihre Rate in zwei Eingaben</h2>
+        <p class="section-lead">Beispielrechnung – die Berechnung läuft ausschließlich in Ihrem Browser, es werden keine Gehaltsdaten übertragen oder gespeichert.</p>
+      </div>
+
+      <div class="glow-grid">
+        <form class="calc-form" id="calc-form">
+          <div class="field">
+            <label for="calc-radpreis">Radpreis (unverbindliche UVP)</label>
+            <input type="number" id="calc-radpreis" name="radpreis" min="500" max="12000" step="50" value="3200" inputmode="numeric">
+          </div>
+          <div class="field">
+            <label for="calc-gehalt">Monatliches Bruttogehalt</label>
+            <input type="number" id="calc-gehalt" name="gehalt" min="1000" max="15000" step="50" value="3800" inputmode="numeric">
+            <p class="hint">Wird nur für die Beispielrechnung genutzt, nirgends gespeichert.</p>
+          </div>
+          <div class="field">
+            <label for="calc-laufzeit">Laufzeit</label>
+            <select id="calc-laufzeit" name="laufzeit">
+              <option value="24">24 Monate</option>
+              <option value="36" selected>36 Monate</option>
+              <option value="48">48 Monate</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" type="submit">Rate berechnen</button>
+        </form>
+
+        <div class="glow-panel" data-theme="glow" aria-live="polite">
+          <div class="glow-result">
+            <div class="ring">
+              <svg viewBox="0 0 150 150" width="150" height="150" aria-hidden="true">
+                <circle cx="75" cy="75" r="64" fill="none" stroke="#22324d" stroke-width="10"/>
+                <circle class="arc animate" id="calc-ring" cx="75" cy="75" r="64" fill="none" stroke="#5cc8ff" stroke-width="10" stroke-linecap="round" stroke-dasharray="100 402" transform="rotate(-90 75 75)"/>
+              </svg>
+              <div class="val"><b id="calc-rate">27 €</b><span>pro Monat</span></div>
+            </div>
+            <div class="data-list">
+              <div class="kv"><small>RADPREIS</small><strong id="calc-out-radpreis">3.200 €</strong></div>
+              <div class="kv"><small>LAUFZEIT</small><strong id="calc-out-laufzeit">36 Monate</strong></div>
+              <div class="kv"><small>ERSPARNIS GGÜ. KAUF</small><strong id="calc-out-ersparnis">ca. 32 %</strong></div>
+            </div>
+          </div>
+          <p class="glow-status-line"><span class="glow-dot" aria-hidden="true"></span>Unverbindliche Beispielrechnung · Ihr persönliches Angebot erstellt Dilan Aydın</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. So funktioniert's -->
+  <section class="surface-soft">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Ablauf</p>
+        <h2 class="section-title">So funktioniert's</h2>
+      </div>
+      <ol class="steps-list">
+        <li>
+          <h3>Anfrage stellen</h3>
+          <p>Firmengröße und Bedarf angeben – Antwort innerhalb eines Werktags.</p>
+        </li>
+        <li>
+          <h3>Angebot erhalten</h3>
+          <p>Klare Konditionen für Ihr Team, ohne Kleingedrucktes.</p>
+        </li>
+        <li>
+          <h3>Rad aussuchen</h3>
+          <p>Beschäftigte fahren in Kassel oder Göttingen Probe.</p>
+        </li>
+        <li>
+          <h3>Übergabe vor Ort</h3>
+          <p>Fertig montiert, geprüft und erklärt in Ihrer Filiale.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 6. Zielgruppen-Kacheln -->
+  <section class="surface-page" id="zielgruppen">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Für wen wir da sind</p>
+        <h2 class="section-title">Arbeitgeber, Beschäftigte, Werkstatt</h2>
+      </div>
+      <div class="audience-grid">
+        <div class="audience-card is-b2b">
+          <div class="img" role="img" aria-label="Foto: Team Klinikum mit Diensträdern">Foto: Team Klinikum mit Diensträdern</div>
+          <div class="body">
+            <h3>Für Arbeitgeber</h3>
+            <p>Klares Angebot, feste Termine, ein Ansprechpartner vor Ort.</p>
+            <a href="#kontakt">Angebot anfragen →</a>
+          </div>
+        </div>
+        <div class="audience-card">
+          <div class="img" role="img" aria-label="Foto: Pendlerin am Morgen auf dem E-Bike">Foto: Pendlerin am Morgen</div>
+          <div class="body">
+            <h3>Für Beschäftigte</h3>
+            <p>Monatsrate berechnen und Ablauf verstehen.</p>
+            <a href="#rechner">Rate berechnen →</a>
+          </div>
+        </div>
+        <div class="audience-card">
+          <div class="img" role="img" aria-label="Foto: Werkstatt in Kassel">Foto: Werkstatt Kassel</div>
+          <div class="body">
+            <h3>Werkstatt</h3>
+            <p>Termin online buchen, Status selbst abfragen.</p>
+            <a href="#werkstatt">Termin wählen →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Referenz -->
+  <section class="surface-tint">
+    <div class="container testimonial">
+      <div class="photo-placeholder" role="img" aria-label="Foto: Ansprechpartnerin des Klinikums">Foto: Ansprechpartnerin Klinikum</div>
+      <div>
+        <blockquote>
+          „Die Anfrage war in einer Woche erledigt, die Räder kamen pünktlich zur Übergabe in die Filiale. Genau das Tempo, das wir für unser Team brauchen.“
+        </blockquote>
+        <cite>Ansprechpartnerin Personalabteilung, regionales Klinikum</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Werkstatt & Status (Glow) -->
+  <section class="surface-page" id="werkstatt">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Werkstatt</p>
+        <h2 class="section-title">Termin buchen und Status abfragen</h2>
+        <p class="section-lead">Termin in drei Schritten, Status jederzeit selbst abrufen – ganz ohne Login.</p>
+      </div>
+
+      <div class="glow-grid">
+        <div class="booking-wizard" aria-labelledby="booking-heading">
+          <h3 id="booking-heading" class="visually-hidden">Werkstatttermin buchen</h3>
+          <div class="booking-steps-nav" id="booking-steps-nav">
+            <span data-step="1" class="is-active">1. Standort</span>
+            <span>·</span>
+            <span data-step="2">2. Zeitfenster</span>
+            <span>·</span>
+            <span data-step="3">3. Bestätigen</span>
+          </div>
+
+          <form id="booking-form">
+            <div class="booking-step is-active" data-step="1">
+              <p>Standort wählen:</p>
+              <div class="choice-row" role="radiogroup" aria-label="Standort">
+                <span class="choice-pill">
+                  <input type="radio" name="standort" id="standort-kassel" value="Kassel" checked>
+                  <label for="standort-kassel">Kassel</label>
+                </span>
+                <span class="choice-pill">
+                  <input type="radio" name="standort" id="standort-goettingen" value="Göttingen">
+                  <label for="standort-goettingen">Göttingen</label>
+                </span>
+              </div>
+              <button class="btn btn-primary" type="button" data-next>Weiter</button>
+            </div>
+
+            <div class="booking-step" data-step="2">
+              <div class="field">
+                <label for="booking-zeitfenster">Zeitfenster</label>
+                <select id="booking-zeitfenster" name="zeitfenster">
+                  <option>Mo, 9:00–11:00 Uhr</option>
+                  <option>Mi, 14:00–16:00 Uhr</option>
+                  <option>Fr, 10:00–12:00 Uhr</option>
+                </select>
+              </div>
+              <button class="btn btn-secondary" type="button" data-back>Zurück</button>
+              <button class="btn btn-primary" type="button" data-next>Weiter</button>
+            </div>
+
+            <div class="booking-step" data-step="3">
+              <div class="field-row two-col">
+                <div class="field">
+                  <label for="booking-name">Name</label>
+                  <input type="text" id="booking-name" name="name" autocomplete="name" required>
+                </div>
+                <div class="field">
+                  <label for="booking-email">E-Mail</label>
+                  <input type="email" id="booking-email" name="email" autocomplete="email" required>
+                </div>
+              </div>
+              <button class="btn btn-secondary" type="button" data-back>Zurück</button>
+              <button class="btn btn-accent" type="submit">Termin bestätigen</button>
+            </div>
+          </form>
+
+          <p class="booking-confirm" id="booking-confirm" hidden role="status"></p>
+        </div>
+
+        <div class="glow-panel" data-theme="glow">
+          <h3 style="color:var(--ink);margin-bottom:var(--space-4);font:700 18px/24px var(--font-display)">Reparaturstatus abfragen</h3>
+          <form class="status-lookup-form" id="status-form">
+            <label class="visually-hidden" for="status-auftragsnummer">Auftragsnummer</label>
+            <input type="text" id="status-auftragsnummer" placeholder="z. B. RW-48213" inputmode="text">
+            <button class="btn btn-accent" type="submit">Status abrufen</button>
+          </form>
+          <p class="status-result" id="status-result" role="status" aria-live="polite"></p>
+          <p class="glow-status-line" style="margin-top:var(--space-6)"><span class="glow-dot" aria-hidden="true"></span>Demo-Abfrage · echte Daten kommen aus der Werkstattplanung</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. FAQ -->
+  <section class="surface-soft" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Häufige Fragen</p>
+        <h2 class="section-title">FAQ</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Wie lange dauert eine Anfrage für Dienstrad-Leasing?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>In der Regel erhalten Sie innerhalb eines Werktags eine Rückmeldung mit den nächsten Schritten.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Werden meine Gehaltsdaten im Rechner gespeichert?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>Nein. Die Berechnung läuft ausschließlich in Ihrem Browser, es werden keine Daten an uns übertragen.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Kann ich einen Werkstatttermin ohne Anmeldung buchen?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>Ja. Standort und Zeitfenster wählen, Kontaktdaten angeben – Sie erhalten sofort eine Bestätigung per E-Mail.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Was passiert, wenn sich mein Termin verschiebt?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>Wir melden uns, bevor der ursprünglich zugesagte Termin stattfinden sollte – nicht erst danach.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Wie erfahre ich den Status meiner Reparatur?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>Mit Ihrer Auftragsnummer, direkt auf dieser Seite im Bereich „Werkstatt &amp; Status“ – ohne Login.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Bieten Sie auch Dienstrad-Leasing für kleine Betriebe an?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>Ja, unabhängig von der Unternehmensgröße. Dilan Aydın erstellt Ihnen ein passendes Angebot.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Wo finde ich den Online-Shop?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <p>Unser Sortiment führt zu unserem bestehenden Online-Shop weiter. Reparaturen und Beratung finden ausschließlich vor Ort statt.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Kontakt -->
+  <section class="surface-page" id="kontakt">
+    <div class="container contact-grid">
+      <form class="contact-form" id="contact-form" novalidate>
+        <div class="section-head">
+          <p class="eyebrow">Kontakt</p>
+          <h2 class="section-title">Anfrage senden</h2>
+        </div>
+
+        <div class="field">
+          <label for="contact-kategorie">Kategorie *</label>
+          <select id="contact-kategorie" name="kategorie" required>
+            <option value="">Bitte wählen</option>
+            <option>B2B-Angebot</option>
+            <option>Werkstatt</option>
+            <option>Bestellung</option>
+            <option>Sonstiges</option>
+          </select>
+        </div>
+
+        <div class="field-row two-col">
+          <div class="field">
+            <label for="contact-name">Name *</label>
+            <input type="text" id="contact-name" name="name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="contact-email">E-Mail *</label>
+            <input type="email" id="contact-email" name="email" autocomplete="email" required>
+          </div>
+        </div>
+
+        <div class="field" id="field-firmengroesse" hidden>
+          <label for="contact-firmengroesse">Firmengröße / Bedarf</label>
+          <input type="text" id="contact-firmengroesse" name="firmengroesse" placeholder="z. B. 45 Beschäftigte, ca. 15 Räder">
+        </div>
+
+        <div class="field">
+          <label for="contact-nachricht">Nachricht</label>
+          <textarea id="contact-nachricht" name="nachricht"></textarea>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Anfrage senden</button>
+        <p class="contact-confirm" id="contact-confirm" role="status">Danke für Ihre Anfrage. Sie erhalten in Kürze eine Eingangsbestätigung per E-Mail.</p>
+      </form>
+
+      <div class="response-time">
+        <h3>Rückmeldezeit</h3>
+        <p>Wir melden uns in der Regel innerhalb eines Werktags. B2B-Anfragen beantwortet Dilan Aydın, Service-Anliegen Amara Osei.</p>
+        <p class="hint" style="color:var(--ink-muted)">Alternativ erreichen Sie uns telefonisch unter <a href="tel:+4956180763070">0561 807 630</a>.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- 11. Footer -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h3>Kassel</h3>
+      <address>
+        Werkstattweg 12<br>
+        34117 Kassel<br>
+        <a class="footer-phone" href="tel:+4956180763070">0561 807 630</a><br>
+        Mo–Fr 9–18 Uhr, Sa 9–14 Uhr
+      </address>
+    </div>
+    <div>
+      <h3>Göttingen</h3>
+      <address>
+        Fahrradallee 5<br>
+        37073 Göttingen<br>
+        <a class="footer-phone" href="tel:+495511234570">0551 123 4570</a><br>
+        Mo–Fr 9–18 Uhr, Sa 9–14 Uhr
+      </address>
+    </div>
+    <div>
+      <h3>Für Arbeitgeber</h3>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:var(--space-2)">
+        <li><a href="#rechner">Leasing-Rechner</a></li>
+        <li><a href="#zielgruppen">Angebot anfragen</a></li>
+        <li><a href="#faq">Häufige Fragen</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Werkstatt</h3>
+      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:var(--space-2)">
+        <li><a href="#werkstatt">Termin buchen</a></li>
+        <li><a href="#werkstatt">Status abfragen</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container">
+    <ul class="footer-legal">
+      <li><a href="#">Impressum</a></li>
+      <li><a href="#">Datenschutz</a></li>
+      <li><a href="#">AGB</a></li>
+    </ul>
+    <p class="footer-note">radwerk mitte GmbH · Fiktive Übungsfirma, alle Angaben erfunden (Business Trends Academy).</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* Mobile-Navigation */
+  var navToggle = document.getElementById("nav-toggle");
+  var mobileNav = document.getElementById("mobile-nav");
+  navToggle.addEventListener("click", function () {
+    var open = mobileNav.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", String(open));
+    navToggle.setAttribute("aria-label", open ? "Menü schließen" : "Menü öffnen");
+  });
+  mobileNav.addEventListener("click", function (e) {
+    if (e.target.tagName === "A") {
+      mobileNav.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  /* Zielgruppen-Schalter im Hero */
+  var audienceContent = {
+    arbeitgeber: {
+      heading: "Diensträder für Ihr Team.",
+      lead: "Wir statten Ihr Team mit Diensträdern aus – und reparieren vor Ort in Kassel und Göttingen.",
+      primary: "Angebot anfragen",
+      primaryHref: "#kontakt",
+      accent: "Termin wählen",
+      accentHref: "#werkstatt"
+    },
+    beschaeftigte: {
+      heading: "Ihr Dienstrad, berechnet in zwei Minuten.",
+      lead: "Rate selbst abschätzen und den Ablauf von der Anfrage bis zur Übergabe in der Filiale verstehen.",
+      primary: "Rate berechnen",
+      primaryHref: "#rechner",
+      accent: "So funktioniert's",
+      accentHref: "#zielgruppen"
+    },
+    privat: {
+      heading: "E-Bikes, Räder und Werkstatt vor Ort.",
+      lead: "Beratung, Kauf und Reparatur in Kassel und Göttingen – Termin online buchen, Status selbst abfragen.",
+      primary: "Termin buchen",
+      primaryHref: "#werkstatt",
+      accent: "Status abfragen",
+      accentHref: "#werkstatt"
+    }
+  };
+
+  var switchButtons = document.querySelectorAll(".audience-switch button");
+  var heroHeading = document.getElementById("hero-heading");
+  var heroLead = document.getElementById("hero-lead");
+  var heroPrimary = document.getElementById("hero-primary-cta");
+  var heroAccent = document.getElementById("hero-accent-cta");
+
+  switchButtons.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      switchButtons.forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+      btn.setAttribute("aria-pressed", "true");
+      var data = audienceContent[btn.getAttribute("data-audience")];
+      heroHeading.textContent = data.heading;
+      heroLead.textContent = data.lead;
+      heroPrimary.textContent = data.primary;
+      heroPrimary.setAttribute("href", data.primaryHref);
+      heroAccent.textContent = data.accent;
+      heroAccent.setAttribute("href", data.accentHref);
+    });
+  });
+
+  /* Leasing-Rechner (rein clientseitig, keine Übertragung) */
+  var calcForm = document.getElementById("calc-form");
+  var calcRing = document.getElementById("calc-ring");
+  var calcRate = document.getElementById("calc-rate");
+  var calcOutRadpreis = document.getElementById("calc-out-radpreis");
+  var calcOutLaufzeit = document.getElementById("calc-out-laufzeit");
+  var calcOutErsparnis = document.getElementById("calc-out-ersparnis");
+  var RING_CIRCUMFERENCE = 2 * Math.PI * 64;
+
+  function formatEuro(value) {
+    return new Intl.NumberFormat("de-DE", { maximumFractionDigits: 0 }).format(value) + " €";
+  }
+
+  function ersparnisProzent(gehalt) {
+    if (gehalt < 3500) return 0.28;
+    if (gehalt < 5500) return 0.32;
+    return 0.38;
+  }
+
+  function berechneRate() {
+    var radpreis = Number(document.getElementById("calc-radpreis").value) || 0;
+    var gehalt = Number(document.getElementById("calc-gehalt").value) || 0;
+    var laufzeit = Number(document.getElementById("calc-laufzeit").value) || 36;
+
+    var monatsrateBrutto = (radpreis / laufzeit) * 1.08;
+    var ersparnis = ersparnisProzent(gehalt);
+    var monatsrateNetto = monatsrateBrutto * (1 - ersparnis);
+
+    calcRate.textContent = formatEuro(Math.round(monatsrateNetto));
+    calcOutRadpreis.textContent = formatEuro(radpreis);
+    calcOutLaufzeit.textContent = laufzeit + " Monate";
+    calcOutErsparnis.textContent = "ca. " + Math.round(ersparnis * 100) + " %";
+
+    var ringShare = Math.min(monatsrateNetto / (radpreis * 0.03 || 1), 1);
+    var filled = Math.max(RING_CIRCUMFERENCE * ringShare, 24);
+    calcRing.setAttribute("stroke-dasharray", filled.toFixed(0) + " " + RING_CIRCUMFERENCE.toFixed(0));
+  }
+
+  calcForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    berechneRate();
+  });
+  calcForm.addEventListener("input", berechneRate);
+  berechneRate();
+
+  /* Werkstatttermin-Assistent (3 Schritte) */
+  var bookingForm = document.getElementById("booking-form");
+  var bookingSteps = bookingForm.querySelectorAll(".booking-step");
+  var bookingNavItems = document.querySelectorAll("#booking-steps-nav [data-step]");
+  var bookingConfirm = document.getElementById("booking-confirm");
+
+  function showBookingStep(stepNumber) {
+    bookingSteps.forEach(function (step) {
+      step.classList.toggle("is-active", step.getAttribute("data-step") === String(stepNumber));
+    });
+    bookingNavItems.forEach(function (item) {
+      item.classList.toggle("is-active", item.getAttribute("data-step") === String(stepNumber));
+    });
+  }
+
+  bookingForm.addEventListener("click", function (e) {
+    if (e.target.matches("[data-next]")) {
+      var current = e.target.closest(".booking-step");
+      showBookingStep(Number(current.getAttribute("data-step")) + 1);
+    }
+    if (e.target.matches("[data-back]")) {
+      var currentBack = e.target.closest(".booking-step");
+      showBookingStep(Number(currentBack.getAttribute("data-step")) - 1);
+    }
+  });
+
+  bookingForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var standort = bookingForm.querySelector('input[name="standort"]:checked').value;
+    var zeitfenster = document.getElementById("booking-zeitfenster").value;
+    bookingConfirm.hidden = false;
+    bookingConfirm.innerHTML = '<span class="status-ok-text">Termin angefragt:</span> ' + standort + ", " + zeitfenster + ". Sie erhalten eine Bestätigung per E-Mail.";
+  });
+
+  /* Statusabfrage (Demo, später Anbindung Werkstattplanung) */
+  var statusForm = document.getElementById("status-form");
+  var statusResult = document.getElementById("status-result");
+  var demoAuftraege = {
+    "RW-48213": { ok: true, text: "Abholbereit ab Donnerstag" },
+    "RW-50871": { ok: false, text: "Verzögert – wir melden uns vor dem Termin" }
+  };
+
+  statusForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var nummer = document.getElementById("status-auftragsnummer").value.trim().toUpperCase();
+    var treffer = demoAuftraege[nummer];
+    if (!nummer) {
+      statusResult.innerHTML = "Bitte Auftragsnummer eingeben.";
+      return;
+    }
+    if (!treffer) {
+      statusResult.innerHTML = "Keine Übereinstimmung. Bitte Auftragsnummer prüfen oder Amara Osei kontaktieren.";
+      return;
+    }
+    var cls = treffer.ok ? "status-ok-text" : "status-hinweis-text";
+    var icon = treffer.ok
+      ? '<svg class="status-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>'
+      : '<svg class="status-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>';
+    statusResult.innerHTML = icon + '<span class="' + cls + '">' + treffer.text + "</span>";
+  });
+
+  /* Kontaktformular */
+  var contactKategorie = document.getElementById("contact-kategorie");
+  var fieldFirmengroesse = document.getElementById("field-firmengroesse");
+  contactKategorie.addEventListener("change", function () {
+    fieldFirmengroesse.hidden = contactKategorie.value !== "B2B-Angebot";
+  });
+
+  var contactForm = document.getElementById("contact-form");
+  var contactConfirm = document.getElementById("contact-confirm");
+  contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!contactForm.checkValidity()) {
+      contactForm.reportValidity();
+      return;
+    }
+    contactConfirm.classList.add("is-visible");
+  });
+})();
+</script>
+</body>
+</html>
