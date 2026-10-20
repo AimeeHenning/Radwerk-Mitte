@@ -1,6 +1,5 @@
 # Interne Kunden-/Briefingunterlagen (nicht Teil der Website, teils vertraulich)
 *.pdf
-tech-spec.md
 
 # Lokale Editor-/Workspace-Konfiguration (verweist auf lokalen ~/Downloads-Pfad)
 *.code-workspace
