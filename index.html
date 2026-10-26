@@ -659,7 +659,7 @@
           <div class="img" role="img" aria-label="Foto: Team Klinikum mit Diensträdern">Foto: Team Klinikum mit Diensträdern</div>
           <div class="body">
             <h3>Für Arbeitgeber</h3>
-            <p>Klares Angebot, feste Termine – auch für Teams im Schichtbetrieb.</p>
+            <p>Klares Angebot, feste Termine, ein Ansprechpartner vor Ort.</p>
             <a href="#kontakt">Angebot anfragen →</a>
           </div>
         </div>
@@ -809,18 +809,6 @@
         <details class="faq-item">
           <summary>Bieten Sie auch Dienstrad-Leasing für kleine Betriebe an?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
           <p>Ja, unabhängig von der Unternehmensgröße. Dilan Aydın erstellt Ihnen ein passendes Angebot.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Bieten Sie feste Werkstatttermine für ganze Teams an, z. B. im Pflegedienst?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
-          <p>Ja. Für Arbeitgeber mit mehreren Diensträdern vereinbaren wir Sammeltermine an einem festen Wochentag je Standort, damit nicht jede Person einzeln anrufen muss. Dilan Aydın stimmt das bei der Anfrage mit Ihnen ab.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Was gilt außerhalb unserer Öffnungszeiten, etwa bei Nachtschicht?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
-          <p>Unsere Werkstätten sind Mo–Fr 9–18 Uhr und Sa 9–14 Uhr besetzt, ein durchgehender Nachtdienst ist in dieser Ausbaustufe nicht vorgesehen. Für kleine Pannen außerhalb dieser Zeiten steht an beiden Standorten frei zugänglich ein Ersatzteil-Automat mit Schlauch, Flickzeug und Licht bereit. <em>(Beispielangabe für diese Übung – kein realer Automatenstandort.)</em></p>
-        </details>
-        <details class="faq-item">
-          <summary>Welchen Vorteil hat Dienstrad-Leasing für Beschäftigte im Schichtdienst?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
-          <p>Das Rad wird über die Gehaltsumwandlung finanziert, Wartung und Versicherung sind im Leasing enthalten, und Beschäftigte sind unabhängig vom Taktfahrplan des ÖPNV unterwegs – gerade bei frühen oder späten Dienstbeginn ein Vorteil. Die konkrete Rate berechnet der Leasing-Rechner oben.</p>
         </details>
         <details class="faq-item">
           <summary>Wo finde ich den Online-Shop?<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
@@ -1124,6 +1112,15 @@
     contactConfirm.classList.add("is-visible");
   });
 })();
+</script>
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/style.css" rel="stylesheet" />
+<script type="module">
+  import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/chat.bundle.es.js';
+  createChat({
+    webhookUrl: 'https://aimee-experience.app.n8n.cloud/webhook/694d00fc-8c16-464f-9401-53d5a19edda3/chat',
+    initialMessages: ['Hallo, ich bin die Assistenz von Aimée.', 'Wie kann ich helfen?'],
+    i18n: { en: { title: 'Assistenz', subtitle: 'Fragen zu meinem Profil.', footer: '', getStarted: 'Neues Gespräch', inputPlaceholder: 'Ihre Frage ...' } },
+  });
 </script>
 </body>
 </html>
